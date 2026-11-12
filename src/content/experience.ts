@@ -34,7 +34,7 @@ export const experience: readonly ExperienceItem[] = [
   id: 'us-bank',
   organization: 'U.S. Bank',
   title: 'Software Engineering Intern',
-  location: '{{ Confirm location }}',
+  location: 'Hopkins, MN',
   start: 'June 2025',
   end: 'August 2025',
   summary:
@@ -64,8 +64,8 @@ export const experience: readonly ExperienceItem[] = [
   title: 'Information Security Analyst',
   employmentType: 'Student worker',
   location: 'St. Paul, Minnesota',
-  start: '{{ Confirm start date }}',
-  end: '{{ Confirm end date or Present }}',
+  start: 'February 2025',
+  end: 'August 2026w',
   summary:
     'Supported campus identity security operations and developed Python automation to investigate suspicious authentication activity and improve security risk triage.',
   highlights: [
