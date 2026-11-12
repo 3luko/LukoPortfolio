@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 3vw, 4rem);
+  align-items: start;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 65ch;
+  font-size: var(--text-lg);
+}
+
+.photoFrame {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 18rem);
+  margin-right: 12px; /* room for the offset outline */
+}
+
+/* Offset accent outline behind the photo */
+.photoFrame::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  transform: translate(12px, 12px);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.photoFrame:hover::after {
+  transform: translate(6px, 6px);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .photoFrame {
+    width: clamp(14rem, 22vw, 18rem);
+  }
+}
