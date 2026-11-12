@@ -1,0 +1,307 @@
+.graph {
+  position: relative;
+  aspect-ratio: 1000 / 700;
+}
+
+/* ---------- Lines ---------- */
+
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lines line {
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke var(--duration-base) ease,
+    opacity var(--duration-base) ease;
+}
+
+.spoke {
+  opacity: 0.8;
+}
+
+.link {
+  opacity: 0.6;
+}
+
+.secondary {
+  stroke-dasharray: 3 5;
+  opacity: 0.5;
+}
+
+.lines line[data-state='lit'] {
+  stroke: var(--cat);
+  opacity: 0.85;
+}
+
+.lines line[data-state='dim'] {
+  opacity: 0.15;
+}
+
+.lines .relation {
+  stroke: var(--color-accent);
+  stroke-dasharray: 2 4;
+  opacity: 0.55;
+}
+
+/* ---------- Positioning ---------- */
+
+/* Zero-size anchor at the point; its child is centred on it. */
+.slot {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 0;
+  height: 0;
+}
+
+/* ---------- Centre ---------- */
+
+.center {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: max-content;
+  transform: translateY(-0.75rem);
+}
+
+.centerDot {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow:
+    0 0 0 6px var(--color-accent-soft),
+    0 0 28px 4px var(--color-glow),
+    0 0 18px var(--color-accent);
+}
+
+.centerLabel {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+/* ---------- Category hubs ---------- */
+
+.hub {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  max-width: 6rem;
+  transform: translateY(-0.4375rem);
+  transition: opacity var(--duration-base) ease;
+}
+
+.hubDot {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2px solid var(--cat);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  transition:
+    opacity var(--duration-base) ease,
+    box-shadow var(--duration-base) ease;
+}
+
+.hubLabel {
+  color: var(--cat);
+  text-shadow:
+    0 0 3px var(--color-surface),
+    0 0 6px var(--color-surface),
+    0 0 10px var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color var(--duration-base) ease;
+}
+
+.hub[data-state='lit'] .hubDot {
+  box-shadow: 0 0 12px var(--cat);
+}
+
+.hub[data-state='dim'] .hubDot {
+  opacity: 0.35;
+}
+
+.hub[data-state='dim'] .hubLabel {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Skill nodes ---------- */
+
+.node {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  max-width: 7rem;
+  padding: 0.3rem 0.4rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+  /* Puts the dot's centre on the anchor point. */
+  transform: translateY(-0.675rem);
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--cat);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat) 16%, transparent);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) ease,
+    opacity var(--duration-base) ease;
+}
+
+.label {
+  color: var(--color-text);
+  text-shadow:
+    0 0 3px var(--color-surface),
+    0 0 6px var(--color-surface),
+    0 0 10px var(--color-surface);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  transition: color var(--duration-base) ease;
+}
+
+.node:hover .dot,
+.node[data-state='active'] .dot {
+  transform: scale(1.4);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--cat) 22%, transparent),
+    0 0 14px color-mix(in srgb, var(--cat) 70%, transparent);
+}
+
+.node[data-state='active'] .label,
+.node[aria-pressed='true'] .label {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.node[aria-pressed='true'] .dot {
+  outline: 2px solid var(--cat);
+  outline-offset: 3px;
+}
+
+.node[data-state='related'] .dot,
+.node[data-state='lit'] .dot {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cat) 22%, transparent);
+}
+
+/* Dimmed nodes keep AA text contrast: only the dot fades, the label goes muted. */
+.node[data-state='dim'] .dot {
+  opacity: 0.3;
+}
+
+.node[data-state='dim'] .label {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Tooltip ---------- */
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.25rem);
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.25rem);
+  transition:
+    opacity var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.tooltip strong {
+  color: var(--color-heading);
+}
+
+.node:hover .tooltip,
+.node:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.slot:has(.node:hover),
+.slot:has(.node:focus-visible) {
+  z-index: 3;
+}
+
+/* ---------- Intro (only applied when motion is allowed) ---------- */
+
+.pending .lines line,
+.pending .hub,
+.pending .center {
+  opacity: 0;
+}
+
+.pending .node {
+  opacity: 0;
+}
+
+.pending .dot {
+  transform: scale(0);
+}
+
+.entering .center {
+  transition: opacity var(--duration-slow) ease;
+}
+
+.entering .hub {
+  transition: opacity var(--duration-slow) ease 250ms;
+}
+
+.entering .lines line {
+  transition: opacity 900ms ease 350ms;
+}
+
+.entering .node {
+  transition: opacity var(--duration-slow) ease calc(400ms + var(--i) * 25ms);
+}
+
+.entering .dot {
+  transition: transform var(--duration-slow) var(--ease-out) calc(400ms + var(--i) * 25ms);
+}

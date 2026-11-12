@@ -58,3 +58,24 @@ Important technical and design decisions, newest at the bottom. Each entry gives
 ### 12. Added a `typecheck` script (`tsc -b --noEmit`)
 - **Date:** 2026-11-11 · **Source:** implementation choice
 - **Why:** the root `tsconfig.json` only references the other two configs. A plain `tsc --noEmit` checks nothing, but `-b` follows the references.
+
+### 13. Skill constellation as an optional view of Skills
+- **Date:** 2026-11-12 · **Source:** the owner approved the placement and scope
+- An "Explore / List" toggle in the Skills section. Explore is the default at ≥ 48rem. On phones the default is List, the original grid. Hero, About and the other sections are unchanged.
+- **Why:** the constellation is useful because it links each skill to evidence. Skills is where visitors look for that. The plain list stays one click away, so the graph never gets in the way of a quick skim.
+- It's lazy-loaded, so it doesn't add to the initial bundle.
+
+### 14. Constellation data is derived, not written by hand
+- **Date:** 2026-11-12 · **Source:** implementation choice
+- Categories come from `skills.ts`. The "used in" entries, the sentence shown for each and the related skills all come from the `tech` lists and highlights in `experience.ts`, `projects.ts` and `constellation.supportingProjects`.
+- Only skills with at least one matching entry appear. Skills in `skills.ts` without evidence are left out of the graph, and so are skills with no support anywhere, such as AWS or Machine Learning.
+- Three supporting projects back up React, JavaScript, Java and TypeScript in the panel only: Amazon Purchase Reflection, Sustainability Trivia Game and this portfolio. The owner chose not to add them as project cards. The Trivia details were checked against its GitHub source; it's a JavaFX team project.
+- **Why:** the constellation can't drift out of sync with the rest of the page, and it can't make claims the page doesn't support.
+
+### 15. Constellation rendering: fixed layout, HTML buttons over SVG lines, no idle motion
+- **Date:** 2026-11-12 · **Source:** implementation choice; the owner agreed to no idle motion
+- Positions are computed once: each category gets a sector, and its skills sit on three staggered rings. There's no force simulation, dragging or panning.
+- Nodes are real `<button>`s placed over an `aria-hidden` SVG of lines, so focus, `:focus-visible`, keyboard and touch work natively.
+- Motion uses CSS transitions only: hover and selection, filter dimming, and a one-time staggered fade-in. All of it is skipped under `prefers-reduced-motion`. There's no continuous floating, so decision 5 still holds.
+- Dimmed nodes fade only the dot, and the label switches to `--color-text-muted`, so the text keeps AA contrast.
+- Five `--color-cat-*` tokens, each with a dark and a light value, named after the `skillGroups` ids. From `64rem` the panel sits beside the graph; below that it sits underneath. The 64rem breakpoint is used only by this component.

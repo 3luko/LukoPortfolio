@@ -65,7 +65,7 @@ export const experience: readonly ExperienceItem[] = [
   employmentType: 'Student worker',
   location: 'St. Paul, Minnesota',
   start: 'February 2025',
-  end: 'August 2026w',
+  end: 'August 2026',
   summary:
     'Supported campus identity security operations and developed Python automation to investigate suspicious authentication activity and improve security risk triage.',
   highlights: [
