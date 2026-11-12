@@ -17,6 +17,6 @@ export const contactLinks: readonly ContactLink[] = [
     kind: 'linkedin',
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/ethanlukandwa/', // 'https://www.linkedin.com/in/ethanlukandwa/'
-    display: 'https://www.linkedin.com/in/ethanlukandwa/',
+    display: 'Ethan Lukandwa',
   },
 ];

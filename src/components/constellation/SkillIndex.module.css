@@ -1,0 +1,31 @@
+.index {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.group {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  letter-spacing: 0;
+}
+
+.title::before {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 2px solid var(--cat);
+  border-radius: 50%;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

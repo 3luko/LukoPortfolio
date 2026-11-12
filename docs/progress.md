@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-11-11_
+_Last updated: 2026-11-12_
 
 ## Done
 
@@ -16,15 +16,14 @@ _Last updated: 2026-11-11_
 - Checks passing: `npm run typecheck`, `npm run lint`, `npm run build`
 - Layout checked by screenshot at 375, 768 and 1280px; no console errors on the preview build
 - Git repo initialised; first commit `6e4f22e`
+- **Skill constellation** (Skills → Explore): 29 evidence-backed skills, category filter, hover preview, details panel with "used in" links and related skills, phone layout, keyboard and reduced-motion support. Checked by screenshot at 375, 768 and 1280px in both themes; every "used in" link resolves to an existing heading. The owner checked it by hand, including the intro animation and the technology descriptions.
 
 ## Current limitations
 
-- **Contact links don't work yet.** All three `href`s in `contact.ts` are still `'#'`. The real URLs are in comments next to them.
-- **Placeholders remain** in `profile.ts` (name, headline, intro, About), `projects.ts`, `skills.ts`, the Contact intro in `navigation.ts`, and three `{{ Confirm ... }}` values in `experience.ts`. Search for `{{` to find them all.
-- **Uncertain:** AgentForge's summary in `projects.ts` reads `'This is the summary'`. It looks like test text.
+- **No project has a link.** Every `links` array in `projects.ts` is empty.
+- **Typo:** the St. Thomas end date in `experience.ts` is `'August 2026w'`.
 - **Uncertain:** the St. Thomas title in `experience.ts` is "Information Security Analyst", but it was "Information Security Intern" during planning. Confirm which is correct.
-- **Page title** in `index.html` is generic. Update it once the name is set.
-- **Lighthouse has not been run.** The target is Accessibility ≥ 95.
+- **Page title** in `index.html` doesn't include the name.- **Lighthouse has not been run.** The target is Accessibility ≥ 95.
 - **No manual keyboard walkthrough yet.** The features are built but haven't been tested by hand.
 - **Headshot is 1028×1028 (~230 KB)** but displays at about 290px wide. It could be smaller.
 - The theme doesn't follow live OS theme changes until reload (see decision 7).
@@ -32,8 +31,8 @@ _Last updated: 2026-11-11_
 
 ## Next recommended tasks
 
-1. Swap the `'#'` hrefs in `contact.ts` for the real URLs (use `mailto:` for email).
-2. Fill in the remaining `{{ ... }}` placeholders, starting with the name in `profile.ts` and the projects.
+1. Add GitHub or demo links to the projects in `projects.ts`.
+2. Fix the `'August 2026w'` typo in `experience.ts`.
 3. Run Lighthouse (Chrome DevTools) on `npm run preview` in both themes, then fix any issues.
 4. Do a keyboard-only pass: Tab through the page, check the mobile menu works with Escape, and check the skip link.
 5. Resize `public/headshot.jpg` to about 600px.
