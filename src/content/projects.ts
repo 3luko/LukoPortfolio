@@ -10,7 +10,7 @@ export const projects: readonly Project[] = [
   {
     id: 'agentforge',
     name: 'AgentForge',
-    summary: '{{ PLACEHOLDER: one-line description of what AgentForge does }}',
+    summary: 'This is the summary',
     description: '{{ PLACEHOLDER: the problem, your approach, and your role }}',
     highlights: ['{{ PLACEHOLDER: notable feature or result }}'],
     tech: ['{{ PLACEHOLDER: tech stack }}'],
