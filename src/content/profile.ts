@@ -28,14 +28,14 @@ export const profile: Profile = {
   ],
 
   resume: {
-    href: '/resume.pdf',
+    href: `${import.meta.env.BASE_URL}resume.pdf`,
     label: 'View resume',
   },
 
   contactLabel: 'Get in touch',
 
   headshot: {
-    src: '/headshot.jpg',
+    src: `${import.meta.env.BASE_URL}headshot.jpg`,
     alt: `Portrait of ${name}`,
     width: 1028,
     height: 1028,
