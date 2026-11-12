@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables / secrets (keep an .env.example if one is ever needed)
+.env
+.env.*
+!.env.example
+*.pem
+
+# Generated output
+coverage
+*.tsbuildinfo

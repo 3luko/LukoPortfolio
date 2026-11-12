@@ -18,7 +18,7 @@ export const sections: Record<SectionId, SectionMeta> = {
     label: 'Contact',
     title: 'Get in touch',
     intro:
-      '{{ PLACEHOLDER: one or two sentences inviting people to reach out, e.g. the roles or conversations you are open to }}',
+      "I'm always open to connecting with fellow engineers, recruiters, and professionals who share a passion for technology and innovation. Whether it's an opportunity in software engineering, data engineering, or cybersecurity, or simply a conversation about an exciting project, I'd love to hear from you!",
   },
 };
 

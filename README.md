@@ -1,75 +1,62 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website showcasing software engineering, data engineering, cybersecurity and AI work. It's a single fast, accessible page built with React, TypeScript and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Six sections: **Hero** (intro + resume button), **About** (with headshot), **Experience**, **Featured projects**, **Technical skills** and **Contact**
+- **Dark and light themes.** Follows your OS on first visit; the header toggle remembers your choice.
+- **Responsive** from small phones up to desktop, with a mobile menu below 768px
+- **Accessible:** skip link, keyboard navigation, visible focus outlines, AA colour contrast, screen-reader labels
+- **Subtle motion:** sections fade in on scroll and cards lift on hover. All of it turns off when the visitor's system asks for reduced motion.
+- **Content kept separate from code:** all text and links are in `src/content/`
+- **Minimal dependencies:** only `react` and `react-dom` at runtime, and no CSS framework
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Requirements: [Node.js](https://nodejs.org/) `20.19+` or `22.12+`, plus npm.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Then open http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the dev server with hot reload |
+| `npm run typecheck` | Check TypeScript types |
+| `npm run lint` | Run ESLint |
+| `npm run build` | Type-check and build the production site into `dist/` |
+| `npm run preview` | Serve the built `dist/` folder at http://localhost:4173 |
 
-```
+## Editing your content
+
+You don't need to touch components to change what the site says. Edit these files:
+
+| File | Contents |
+|---|---|
+| `src/content/profile.ts` | Name, headline, intro, About paragraphs, resume and headshot paths |
+| `src/content/experience.ts` | Jobs and internships |
+| `src/content/projects.ts` | Project cards and their links |
+| `src/content/skills.ts` | Skill groups |
+| `src/content/contact.ts` | Email, GitHub and LinkedIn links |
+| `src/content/navigation.ts` | Section titles and navigation labels |
+
+Unfinished text is marked `{{ ... }}`. Search the project for `{{` to find what's left. Links still set to `'#'` don't go anywhere yet.
+
+Static files live in `public/`: `resume.pdf`, `headshot.jpg` and `favicon.svg`. Replace them with files of the same name to update them.
+
+## Project docs
+
+- [`docs/architecture.md`](docs/architecture.md): how the code is organised
+- [`docs/decisions.md`](docs/decisions.md): why it's built this way
+- [`docs/progress.md`](docs/progress.md): status, limitations, next steps
+- [`PLAN.md`](PLAN.md): original plan and Definition of Done
+
+## Deployment
+
+Not set up yet. `npm run build` produces a static site in `dist/` that any static host can serve.
