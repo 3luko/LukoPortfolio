@@ -23,6 +23,13 @@
   --color-glow: rgb(94 234 212 / 0.09);
   --shadow-card: 0 16px 40px -20px rgb(0 0 0 / 0.75);
 
+  /* Skill categories (constellation). Named after skillGroups ids; ≥ 4.5:1 on bg and surface. */
+  --color-cat-software: #5eead4;
+  --color-cat-data: #7dd3fc;
+  --color-cat-security: #c4b5fd;
+  --color-cat-ai: #fcd34d;
+  --color-cat-tools: #cbd5e1;
+
   /* Type */
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
@@ -80,4 +87,10 @@
   --color-header-bg: rgb(246 248 251 / 0.85);
   --color-glow: rgb(15 118 110 / 0.08);
   --shadow-card: 0 16px 40px -22px rgb(15 23 42 / 0.3);
+
+  --color-cat-software: #0f766e;
+  --color-cat-data: #0369a1;
+  --color-cat-security: #6d28d9;
+  --color-cat-ai: #a16207;
+  --color-cat-tools: #475569;
 }

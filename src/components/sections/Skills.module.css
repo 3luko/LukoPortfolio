@@ -18,3 +18,41 @@
   font-size: var(--text-base);
   letter-spacing: 0;
 }
+
+/* Explore / List switch */
+.viewToggle {
+  display: inline-flex;
+  margin-bottom: var(--space-6);
+  padding: 0.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.viewButton {
+  min-height: 2.25rem;
+  padding: 0.35rem 1rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.viewButton:hover {
+  color: var(--color-heading);
+}
+
+.viewButton[aria-pressed='true'] {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.loading {
+  min-height: 32rem;
+}
